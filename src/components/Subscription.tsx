@@ -1,21 +1,32 @@
+import { useStore } from "@nanostores/react"
+import { changeEmail, changePassword, SubscribeStore } from "../stores/Subscription.store"
+
 /**
  * Composant de l'écran de connexion
  */
 export default function Subscription() {
+
+    const {email, password, isPasswordValid, isEmailValid} = useStore(SubscribeStore)
     return(
         <>
-            <h1>Connexion</h1>
+            <h1>Inscription</h1>
             <div>
-                <input type="email"></input>
-                <i></i>
-                <hr/>
+                <input type="email" value={email} onChange={changeEmail}></input>
+                {isEmailValid === null ? null : isEmailValid ? (
+                    <p>Valide</p>
+                ) : (
+                    <p>Non Valide</p>
+                )}
             </div>
             <div>
-                <input type="password"></input>
-                <i></i>
-                <hr/>
+                <input type="password" value={password} onChange={changePassword}></input>
+                {isPasswordValid === null ? null : isPasswordValid ? (
+                    <p>Valide</p>
+                ) : (
+                    <p>Non Valide</p>
+                )}
             </div>
-            <button>Envoyer</button>
+            <button>S'inscrire</button>
             <p>Vous n'avez pas de compte ? <br/> Inscrivez Vous</p>
         </>
     )
