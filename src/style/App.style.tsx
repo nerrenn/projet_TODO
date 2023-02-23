@@ -17,6 +17,9 @@ export const AppGlobalStyle = createGlobalStyle`
     }
     
     html, body, #root{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         min-height: 100vh;
         min-width: 100vw;
         margin: 0;
